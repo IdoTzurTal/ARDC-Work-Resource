@@ -9,6 +9,7 @@ import {
   Card,
   Button,
   FormGroup,
+  Typography,
 } from "@mui/material";
 
 function FormApplicant() {
@@ -40,18 +41,25 @@ function FormApplicant() {
   };
 
   return (
-    <Card>
+    <Card sx={{ paddingLeft: "8vw", paddingRight: "8vw" }}>
       <FormControl sx={{ display: "flex", items: "center", p: 3 }}>
         <FormGroup>
-          <h1>Sign Up as Applicant: </h1>
+          <Typography sx={{ fontWeight: "bold" }} component="h2" variant="h4">
+            Sign Up as Applicant:
+          </Typography>
           <FormLabel>First Name: </FormLabel>
           <TextField
+            label="First Name"
+            sx={{ minmaxWidth: "20vw" }}
+            margin="dense"
             type="text"
             placeholder="First Name"
             onChange={(e) => setFirstName(e.target.value)}
           />
           <FormLabel>Last Name: </FormLabel>
           <TextField
+            label="Last Name"
+            margin="dense"
             type="text"
             placeholder="Last Name"
             onChange={(e) => setLastName(e.target.value)}
@@ -63,24 +71,32 @@ function FormApplicant() {
           </Select>
           <FormLabel>Email: </FormLabel>
           <TextField
+            label="Email"
+            margin="dense"
             type="email"
             placeholder="email"
             onChange={(e) => setEmail(e.target.value)}
           />
           <FormLabel>Password: </FormLabel>
           <TextField
+            label="Password"
+            margin="dense"
             type="password"
             placeholder="password"
             onChange={(e) => setPassword(e.target.value)}
           />
           <FormLabel>Bio: </FormLabel>
           <TextField
+            label="Bio"
+            margin="dense"
             type="text"
             placeholder="Bio"
             onChange={(e) => setBio(e.target.value)}
           />
           <FormLabel>Experience: </FormLabel>
           <TextField
+            label="Experience"
+            margin="dense"
             type="text"
             placeholder="Experience"
             onChange={(e) => setExperience(e.target.value)}
@@ -105,7 +121,12 @@ function FormApplicant() {
             </MenuItem>
           </Select>
           <FormLabel>Other skills (optioal):</FormLabel>
-          <TextField id="skills" onClick={(e) => setSkills(e.target.value)} />
+          <TextField
+            label="Other skills"
+            margin="dense"
+            id="skills"
+            onClick={(e) => setSkills(e.target.value)}
+          />
           <Button
             type="button"
             variant="contained"
