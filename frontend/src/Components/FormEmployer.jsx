@@ -86,6 +86,11 @@ function FormEmployer() {
           placeholder="Requirements"
           onChange={(e) => setRequirements(e.target.value)}
         />
+        <label>Logo URL:</label>
+        <input
+          placeholder="paste public URL of photo here"
+          onChange={(e) => setLogo(e.target.value)}
+        />
         <label>Other: </label>
         <input
           type="text"

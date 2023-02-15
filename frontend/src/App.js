@@ -11,6 +11,7 @@ import Admnin from "./Components/Admin";
 import Navbar from "./Components/Navbar";
 import Resumes from "./Components/Resume";
 import Footer from "./Components/Footer";
+import Login from "./Components/Login";
 
 function App() {
   return (
@@ -21,16 +22,17 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/Register" element={<Register />} />
+          <Route path="/Login" element={<Login />} />
           <Route path="/FormApplicant" element={<FormApplicant />} />
           <Route path="/FormEmployer" element={<FormEmployer />} />
-          <Route path="/Emploers" element={<Employers />} />
+          <Route path="/Employers" element={<Employers />} />
           <Route path="/Services" element={<Services />} />
           <Route path="/Resumes" element={<Resumes />} />
           <Route path="/ContactUs" element={<ContactUs />} />
           <Route path="/Admin" element={<Admnin />} />
         </Routes>
 
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </div>
   );

@@ -3,13 +3,35 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
+import { ThemeProvider, createTheme } from "@mui/material";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#0077b6",
+      light: "#90e0ef",
+      dark: "#0077b6",
+    },
+    secondary: {
+      main: "#56ab91",
+      light: "#78c6a3",
+      dark: "#358f80",
+    },
+  },
+  typography: {
+    fontFamily: ["Anton", "sans-serif"].join(","),
+  },
+});
+
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ThemeProvider>
   </React.StrictMode>
 );
 

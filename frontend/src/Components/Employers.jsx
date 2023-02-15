@@ -1,7 +1,7 @@
 function Employers() {
   return (
     <div>
-      <h3>Benefactor</h3>
+      <h3>Employers Working with us</h3>
       <p>Join our community and hire our services </p>
       <h4>List of the companies working with us: </h4>
 

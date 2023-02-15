@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useState } from "react";
 
 function Login() {
   const [email, setEmail] = useState();
@@ -23,7 +24,11 @@ function Login() {
   return (
     <div>
       <h3>Login to existent user</h3>
-      <input placeholder="username" />
+      <input
+        type="email"
+        placeholder="email"
+        onChange={(ev) => setEmail(ev.target.value)}
+      />
       <input
         type="password"
         onChange={(ev) => setPassword(ev.target.value)}
