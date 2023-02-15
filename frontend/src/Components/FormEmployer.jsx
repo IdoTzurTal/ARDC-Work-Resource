@@ -13,20 +13,22 @@ function FormEmployer() {
   const [other, setOther] = useState();
   const [logo, setLogo] = useState();
 
-  //   const handleSignup = async () => {
-  //     let result = axios.post("http://localhost:9000/register", {
-  //       email,
-  //       password,
-  //       firstName,
-  //       lastName,
-  //       companyName,
-  //       jobRole,
-  //       description,
-  //       requirements,
-  //       other,
-  //     });
-  //     console.log(result.data);
-  //   };
+  const handleSignup = async () => {
+    let result = axios.post("http://localhost:9000/registerE", {
+      company: companyName,
+      firstname: firstName,
+      lastname: lastName,
+      email: email,
+      password: password,
+      logo: logo,
+      // jobRole,
+      // description,
+      // requirements,
+      // other,
+    });
+    console.log(result.data);
+    alert("User created");
+  };
 
   return (
     <div>
@@ -62,19 +64,13 @@ function FormEmployer() {
           placeholder="Last Name"
           onChange={(e) => setLastName(e.target.value)}
         />
-        <label>Job Role: </label>
+        {/* <label>Job Role: </label>
         <input
           type="text"
           placeholder="Job Role"
           onChange={(e) => setJobRole(e.target.value)}
-        />
-        <label>Description: </label>
-        <input
-          type="text"
-          placeholder="Description"
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <label>Description: </label>
+        /> */}
+        {/* <label>Description: </label>
         <input
           type="text"
           placeholder="Description"
@@ -85,23 +81,20 @@ function FormEmployer() {
           type="text"
           placeholder="Requirements"
           onChange={(e) => setRequirements(e.target.value)}
-        />
+        /> */}
         <label>Logo URL:</label>
         <input
           placeholder="paste public URL of photo here"
           onChange={(e) => setLogo(e.target.value)}
         />
-        <label>Other: </label>
+        {/* <label>Other: </label>
         <input
           type="text"
           placeholder="Other things important to you..."
           onChange={(e) => setOther(e.target.value)}
-        />
+        /> */}
 
-        <button
-          type="button"
-          // onClick={handleSignup}
-        >
+        <button type="button" onClick={handleSignup}>
           Sign up
         </button>
       </form>
