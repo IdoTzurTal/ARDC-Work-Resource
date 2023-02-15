@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useContext } from "react";
-import EmpContext from "./Context/EmpContext";
+import {EmpContext} from "./Context/EmpContext";
 
 function FormEmployer() {
   const { email, setEmail,
@@ -94,35 +94,35 @@ function FormEmployer() {
             placeholder="Last Name"
             onChange={(e) => setLastName(e.target.value)}
           />
-          {/* <FormLabel>Job Role: </FormLabel>
-        <TextField
-        label="Job Role"
+          <FormLabel>Job Role: </FormLabel>
+          <TextField
+            label="Job Role"
             sx={{ minmaxWidth: "20vw" }}
             margin="dense"
-          type="text"
-          placeholder="Job Role"
-          onChange={(e) => setJobRole(e.target.value)}
-        /> */}
-          {/* <FormLabel>Description: </FormLabel>
-        <TextField
-        label="Description"
+            type="text"
+            placeholder="Job Role"
+            onChange={(e) => setProfession(e.target.value)}
+          />
+          <FormLabel>Description: </FormLabel>
+          <TextField
+            label="Description"
             sx={{ minmaxWidth: "20vw" }}
             margin="dense"
-            
-          type="text"
-          placeholder="Description"
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <FormLabel>Requirements: </FormLabel>
-        <TextField
-        label="Description"
+
+            type="text"
+            placeholder="Description"
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          <FormLabel>Requirements: </FormLabel>
+          <TextField
+            label="Description"
             sx={{ minmaxWidth: "20vw" }}
             margin="dense"
-            
-          type="text"
-          placeholder="Requirements"
-          onChange={(e) => setRequirements(e.target.value)}
-        /> */}
+
+            type="text"
+            placeholder="Requirements"
+            onChange={(e) => setRequirements(e.target.value)}
+          />
           <FormLabel>Logo URL:</FormLabel>
           <TextField
             label="Logo URL"
@@ -133,17 +133,17 @@ function FormEmployer() {
             placeholder="paste public URL of photo here"
             onChange={(e) => setLogo(e.target.value)}
           />
-          {/* <FormLabel>Other: </FormLabel>
-        <TextField
-        label="Other"
+          <FormLabel>Other: </FormLabel>
+          <TextField
+            label="Other"
             sx={{ minmaxWidth: "20vw" }}
             margin="dense"
-            
 
-          type="text"
-          placeholder="Other things important to you..."
-          onChange={(e) => setOther(e.target.value)}
-        />
+
+            type="text"
+            placeholder="Other things important to you..."
+            onChange={(e) => setOther(e.target.value)}
+          />
 
           <Button type="button" onClick={handleSignup}>
             Sign up

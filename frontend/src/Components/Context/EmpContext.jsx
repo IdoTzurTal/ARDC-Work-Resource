@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createContext } from "react";
-const EmpContext = createContext()
+export const EmpContext = createContext()
 
 function EContext({children}) {
     const [email, setEmail] = useState();
@@ -14,7 +14,7 @@ function EContext({children}) {
     const [other, setOther] = useState();
     const [logo, setLogo] = useState();
 
-    return <EmpContext.Provider value={{
+    return (<EmpContext.Provider value={{
         email, setEmail,
         password, setPassword,
         companyName, setCompanyName,
@@ -27,7 +27,7 @@ function EContext({children}) {
         logo, setLogo
     }}>
         {children}
-    </EmpContext.Provider>
+    </EmpContext.Provider>)
 }
 
-export default EmpContext
+export default EContext
