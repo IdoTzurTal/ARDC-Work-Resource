@@ -11,7 +11,8 @@ exports.registerA = async (req, res) => {
             res.status(500).send(error)
         }
         else {
-            res.status(200).json({ message: "New Applicant Registered", firstname, lastname, applicant })
+            const token = jwt.sign({ id: applicant._id }, process.env.JWT_TOKEN)
+            res.status(200).json({ message: "New Applicant Registered", firstname, lastname, applicant, token })
         }
     })
 }
@@ -36,11 +37,41 @@ exports.loginA = (req, res) => {
                         res.status(406).json({ message: "Encryption Error" })
                     }
                     else {
-                        const token = jwt.sign({ id: applicant._id }, process.env.JWT_TOKEN)
+                        const token = jwt.sign({ id: applicant._id, role: applicant.role }, process.env.JWT_TOKEN)
                         res.json({ token, _id: applicant._id, firstname: applicant.firstname })
                     }
                 })
             }
         }
     )
+}
+
+exports.deleteApplicant = (req, res) => {
+    Applicant.findByIdAndDelete({
+        _id: req.body.id
+    },
+        (error) => {
+            if (error) {
+                res.status(500).send(error)
+            }
+            else {
+                res.status(200).json({ message: "Applicant Deleted" })
+            }
+        }
+    )
+}
+
+exports.editApplicant = (req, res) => {
+    Applicant.findByIdAndUpdate( req.body._id, req.body )
+    .then((upapplicant) => {
+        if (!upapplicant) {
+            res.status(500).json({ message: "Applicant Doesn't Exist" })
+        }
+        else {
+            res.status(200).json({ message: "Applicant Data Updated", upapplicant })
+        }
+    })
+    .catch((error) => {
+        res.status(403).json({ error: error.message })
+    })
 }

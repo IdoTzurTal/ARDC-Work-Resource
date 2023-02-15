@@ -11,7 +11,8 @@ const skillSchema = new mongoose.Schema({
     },
     examples: {
         type: mongoose.Types.ObjectId,
-        ref: "Applicant"
+        ref: "Applicant",
+        required: false
     }
 })
 
