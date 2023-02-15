@@ -19,11 +19,14 @@ function App() {
     <div className="App">
       <div>
         <Navbar />
-        <Paper sx={{ mt: 10, pb: 2 }}>
+        <div style={{ marginTop: "10rem", paddingBottom: "2rem" }}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/Register" element={<Register />} />
-            <Route path="/Login" element={<Login />} />
+            <Route
+              path="/Login"
+              element={localStorage.getItem("token") ? <HomePage /> : <Login />}
+            />
             <Route path="/FormApplicant" element={<FormApplicant />} />
             <Route path="/FormEmployer" element={<FormEmployer />} />
             <Route path="/Employers" element={<Employers />} />
@@ -32,7 +35,7 @@ function App() {
             <Route path="/ContactUs" element={<ContactUs />} />
             <Route path="/Admin" element={<Admnin />} />
           </Routes>
-        </Paper>
+        </div>
 
         {/* <Footer /> */}
       </div>

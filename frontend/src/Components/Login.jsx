@@ -1,41 +1,71 @@
+import { Button, Card, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
 
 function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-
+  const [loading, setLoading] = useState(false);
   const handleLogin = () => {
+    setLoading(true);
     axios
-      .post("http://localhost:9000/loginA", "http://localhost:9000/loginE", {
+      .post("http://localhost:9000/loginA", {
         email,
         password,
       })
       .then((result) => {
-        localStorage.setItem("email", result.data.email);
+        localStorage.setItem("email", email);
         localStorage.setItem("token", result.data.token);
+        setLoading(false);
         // (localStorage.getItem("token"));
       })
       .catch((error) => {
+        axios
+          .post("http://localhost:9000/loginE", {
+            email,
+            password,
+          })
+          .then((result) => {
+            localStorage.setItem("email", email);
+            localStorage.setItem("token", result.data.token);
+            setLoading(false);
+            // (localStorage.getItem("token"));
+          })
+          .catch((error) => {
+            console.log(error);
+          });
         console.log(error);
+        alert("logged in");
       });
   };
 
   return (
-    <div>
-      <h3>Login to existent user</h3>
-      <input
-        type="email"
-        placeholder="email"
-        onChange={(ev) => setEmail(ev.target.value)}
-      />
-      <input
-        type="password"
-        onChange={(ev) => setPassword(ev.target.value)}
-        placeholder="password"
-      />
-      <button onClick={handleLogin}>Login</button>
-    </div>
+    <Card sx={{ p: 5, display: "flex", flexDirection: "column" }}>
+      {loading ? (
+        <div>
+          <p>loading</p>
+        </div>
+      ) : (
+        <div>
+          <Typography color="primary">Login to existing user:</Typography>
+          <TextField
+            type="email"
+            placeholder="email"
+            sx={{ m: 2 }}
+            onChange={(ev) => setEmail(ev.target.value)}
+          />
+          <TextField
+            type="password"
+            sx={{ m: 2 }}
+            onChange={(ev) => setPassword(ev.target.value)}
+            placeholder="password"
+          />
+          <Button variant="contained" sx={{ m: 2 }} onClick={handleLogin}>
+            Login
+          </Button>
+        </div>
+      )}
+    </Card>
   );
 }
 
