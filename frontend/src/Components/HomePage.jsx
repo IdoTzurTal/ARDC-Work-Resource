@@ -19,13 +19,13 @@ function HomePage() {
 
   return (
     <div>
-      <Grid item xs={12} md={6}>
+      <Grid>
         <CardActionArea>
           <Card sx={{ display: "flex" }}>
             <CardMedia
               component="img"
-              sx={{ width: "100vw", display: { xs: "none", sm: "block" } }}
-              image="https://images.pexels.com/photos/935949/pexels-photo-935949.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              sx={{ width: "100vw" }}
+              image="/images/home1.jpg"
               alt="home image"
             />
           </Card>
@@ -40,12 +40,26 @@ function HomePage() {
               transform: "translate(-50%, -50%)",
             }}
           >
-            <Typography component="h2" variant="h5">
+            <Typography
+              sx={{ fontWeight: "bold" }}
+              component="h2"
+              variant="h4"
+              color="primary"
+            >
               ARDC Resource
             </Typography>
-            <Typography variant="subtitle1" color="primary.dark">
+            <Typography
+              sx={{ letterSpacing: 4 }}
+              variant="subtitle1"
+              color="primary.dark"
+            >
               Meet your hiring needs while making an impact
             </Typography>
+            <img
+              src="/images/jobhome.png"
+              alt="icon"
+              style={{ width: "50vw" }}
+            />
           </div>
         </CardContent>
 
@@ -69,21 +83,34 @@ function HomePage() {
               component="img"
               sx={{
                 width: "50vw",
-                display: { xs: "none", sm: "block" },
               }}
-              image="https://images.pexels.com/photos/1087735/pexels-photo-1087735.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              image="/images/home2.jpg"
               alt="home image"
             />
           </Card>
         </CardActionArea>
-        <Card sx={{ p: 3 }}>
-          <Typography variant="body1" color="primary.dark">
-            We meet can help you meet your hiring needs with qualified, skilled,
-            and diligent employees from Israel's refugee communities.
-          </Typography>
-          <Button color="primary" variant="contained" sx={{ m: 2 }}>
-            <WhiteLink to="/Register">Join now</WhiteLink>
-          </Button>
+        <Card
+          sx={{
+            p: 3,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <div>
+            <Typography
+              sx={{ letterSpacing: 1 }}
+              variant="body1"
+              color="primary.dark"
+            >
+              We meet can help you meet your hiring needs with qualified,
+              skilled, and diligent employees from Israel's refugee communities.
+            </Typography>
+            <Button color="primary" variant="contained" sx={{ m: 2 }}>
+              <WhiteLink to="/Register">Join now</WhiteLink>
+            </Button>
+          </div>
+          <img src="/images/home3.png" alt="icon" style={{ width: "30vw" }} />
         </Card>
       </Grid>
     </div>
