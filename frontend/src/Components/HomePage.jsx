@@ -1,5 +1,4 @@
 import {
-  PropTypes,
   Grid,
   Card,
   CardActionArea,
@@ -10,12 +9,31 @@ import {
   styled,
 } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import { gsap } from "gsap";
+import { useRef, useEffect } from "react";
 
 function HomePage() {
   const WhiteLink = styled(NavLink)({
     color: "white",
     textDecoration: "none",
   });
+
+  const onEnter = ({ currentTarget }) => {
+    gsap.to(currentTarget, { backgroundColor: "#A7E7F8", scale: 1.2 });
+  };
+
+  const onLeave = ({ currentTarget }) => {
+    gsap.to(currentTarget, { backgroundColor: "#0077b6", scale: 1 });
+  };
+
+  const circleRef = useRef(null);
+  useEffect(() => {
+    gsap.to("#thirdCircle", {
+      x: 100,
+      duration: 2,
+      ease: "bounce",
+    });
+  }, []);
 
   return (
     <div>
@@ -24,7 +42,12 @@ function HomePage() {
           <Card sx={{ display: "flex" }}>
             <CardMedia
               component="img"
-              sx={{ width: "100vw" }}
+              sx={{
+                width: "100vw",
+                height: "50vw",
+                objectFit: "cover",
+                objectPosition: "bottom",
+              }}
               image="/images/home1.jpg"
               alt="home image"
             />
@@ -65,13 +88,22 @@ function HomePage() {
 
         <CardActionArea>
           <Card
+            ref={circleRef}
             sx={{
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
             }}
           >
-            <CardContent sx={{ flex: 1, m: 1 }}>
+            <CardContent
+              sx={{
+                flex: 1,
+                m: 1,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <Typography component="p" variant="h5">
                 Founded in 2004, ARDC is an Israeli non-profit organization that
                 works to promote social inclusion and economic mobility for
@@ -93,8 +125,8 @@ function HomePage() {
           sx={{
             p: 3,
             display: "flex",
-            justifyContent: "center",
             alignItems: "center",
+            justifyContent: "space-between",
           }}
         >
           <div>
@@ -106,7 +138,13 @@ function HomePage() {
               We meet can help you meet your hiring needs with qualified,
               skilled, and diligent employees from Israel's refugee communities.
             </Typography>
-            <Button color="primary" variant="contained" sx={{ m: 2 }}>
+            <Button
+              onMouseEnter={onEnter}
+              onMouseLeave={onLeave}
+              color="primary"
+              variant="contained"
+              sx={{ m: 2 }}
+            >
               <WhiteLink to="/Register">Join now</WhiteLink>
             </Button>
           </div>

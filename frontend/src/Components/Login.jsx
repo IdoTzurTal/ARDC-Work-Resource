@@ -2,6 +2,7 @@ import { Button, Card, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
 import jwt_decode from "jwt-decode";
+import { display } from "@mui/system";
 
 function Login() {
   const [email, setEmail] = useState();
@@ -45,7 +46,12 @@ function Login() {
 
   return (
     <Card
-      sx={{ p: 5, display: "flex", flexDirection: "column", minHeight: "85vw" }}
+      sx={{
+        p: 5,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+      }}
     >
       <div>
         <Typography
@@ -56,23 +62,25 @@ function Login() {
         >
           Login to existing user:
         </Typography>
-        <TextField
-          type="email"
-          placeholder="email"
-          sx={{ m: 2 }}
-          onChange={(ev) => setEmail(ev.target.value)}
-        />
-        <TextField
-          type="password"
-          sx={{ m: 2 }}
-          onChange={(ev) => setPassword(ev.target.value)}
-          placeholder="password"
-        />
-        <Button variant="contained" sx={{ m: 2 }} onClick={handleLogin}>
-          Login
-        </Button>
-        <img src="/images/loginimg.png" alt="icon" style={{ width: "60vw" }} />
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <TextField
+            type="email"
+            placeholder="email"
+            sx={{ m: 2 }}
+            onChange={(ev) => setEmail(ev.target.value)}
+          />
+          <TextField
+            type="password"
+            sx={{ m: 2 }}
+            onChange={(ev) => setPassword(ev.target.value)}
+            placeholder="password"
+          />
+          <Button variant="contained" sx={{ m: 2 }} onClick={handleLogin}>
+            Login
+          </Button>
+        </div>
       </div>
+      <img src="/images/loginimg.png" alt="icon" style={{ width: "60vw" }} />
     </Card>
   );
 }
