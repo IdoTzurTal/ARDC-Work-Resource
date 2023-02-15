@@ -1,9 +1,41 @@
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import { Card, Typography, Link } from "@mui/material";
+
 function ContactUs() {
   return (
     <div>
-      <h2>Contact us</h2>
-
-      <img src="/images/contact.png" alt="icon" style={{ width: "80vw" }} />
+      <Card sx={{ p: 1, m: 1 }}>
+        <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+          Contact us:
+        </Typography>
+        <Link
+          target="_blank"
+          href="https://www.linkedin.com/company/african-refugee-development-center/?originalSubdomain=il"
+        >
+          <LinkedInIcon sx={{ width: "5vw", height: "5vw" }} />
+        </Link>
+        <Link
+          target="_blank"
+          href="https://www.instagram.com/ardc_israel/?hl=en"
+        >
+          <InstagramIcon sx={{ width: "5vw", height: "5vw" }} />
+        </Link>
+        <Link target="_blank" href="https://twitter.com/ARDC_org">
+          <TwitterIcon sx={{ width: "5vw", height: "5vw" }} />
+        </Link>
+        <Link
+          target="_blank"
+          href="https://www.facebook.com/ARDCinISRAEL/?fref=ts"
+        >
+          <FacebookIcon sx={{ width: "5vw", height: "5vw" }} />
+        </Link>
+        <div>
+          <img src="/images/contact.png" alt="icon" style={{ width: "50vw" }} />
+        </div>
+      </Card>
     </div>
   );
 }
