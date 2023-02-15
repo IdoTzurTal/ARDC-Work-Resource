@@ -16,7 +16,6 @@ function Register() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          minHeight: "85vw",
         }}
       >
         <Typography
@@ -39,7 +38,7 @@ function Register() {
         >
           <WhiteLink to="/FormEmployer">Employer</WhiteLink>
         </Button>
-        <img src="/images/signup.png" alt="icon" style={{ width: "65vw" }} />
+        <img src="/images/signup.png" alt="icon" style={{ width: "50vw" }} />
       </Card>
     </div>
   );
