@@ -104,7 +104,7 @@ function FormApplicant() {
               Customer Support Representative
             </MenuItem>
           </Select>
-          <FormLabel>Other skills (optioal):</FormLabel>
+          <FormLabel>Other skills (optional):</FormLabel>
           <TextField id="skills" onClick={(e) => setSkills(e.target.value)} />
           <Button
             type="button"
