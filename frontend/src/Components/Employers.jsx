@@ -1,4 +1,19 @@
+import { useContext } from "react";
+import EmpContext from "./Context/EmpContext";
+
 function Employers() {
+  
+  const { email, setEmail,
+    password, setPassword,
+    companyName, setCompanyName,
+    firstName, setFirstName,
+    lastName, setLastName,
+    profession, setProfession,
+    description, setDescription,
+    requirements, setRequirements,
+    other, setOther,
+    logo, setLogo } = useContext(EmpContext)
+
   return (
     <div>
       <h3>Employers Working with us</h3>

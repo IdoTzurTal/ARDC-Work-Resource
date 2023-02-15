@@ -13,10 +13,16 @@ import Resumes from "./Components/Resume";
 import Footer from "./Components/Footer";
 import Login from "./Components/Login";
 import { Paper } from "@mui/material";
+import EContext from "./Components/Context/EmpContext";
+import AContext from "./Components/Context/AppContext";
 import EditApplicant from "./Components/EditApplicant";
 
+
 function App() {
+
   return (
+    <AContext.Provider>
+      <EContext.Provider>
     <div className="App">
       <div>
         <Navbar />
@@ -45,9 +51,11 @@ function App() {
           </Routes>
         </div>
 
-        {/* <Footer /> */}
-      </div>
-    </div>
+            {/* <Footer /> */}
+          </div>
+        </div>
+      </EContext.Provider>
+    </AContext.Provider>
   );
 }
 

@@ -24,6 +24,18 @@ const empSchema = new mongoose.Schema({
         type: Boolean,
         default: true
     },
+    profession: {
+        type: String,
+    },
+    description: {
+        type: String
+    },
+    requirements: {
+        type: String
+    },
+    other: {
+        type: String
+    },
     role: {
         type: String,
         default: "Employer"

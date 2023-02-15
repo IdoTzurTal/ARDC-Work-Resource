@@ -11,18 +11,22 @@ import {
   FormGroup,
   Typography,
 } from "@mui/material";
+import { useContext } from "react";
+import AppContext from "./Context/AppContext";
 
 function FormApplicant() {
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
-  const [gender, setGender] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [bio, setBio] = useState();
-  const [experience, setExperience] = useState();
-  const [mainSkill, setMainSkill] = useState();
-  const [skills, setSkills] = useState();
-  const [CV, setCV] = useState();
+  const {
+    firstName, setFirstName,
+    lastName, setLastName,
+    gender, setGender,
+    email, setEmail,
+    password, setPassword,
+    bio, setBio,
+    experience, setExperience,
+    mainSkill, setMainSkill,
+    skills, setSkills,
+    CV, setCV
+  } = useContext(AppContext)
 
   const handleSignup = async () => {
     let result = axios.post("http://localhost:9000/registerA", {
