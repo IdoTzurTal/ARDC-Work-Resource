@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createContext } from "react";
-const AppContext = createContext()
+export const AppContext = createContext()
 
 function AContext({children}) {
     const [firstName, setFirstName] = useState();
@@ -31,4 +31,4 @@ function AContext({children}) {
     </AppContext.Provider>
 }
 
-export default AppContext
+export default AContext

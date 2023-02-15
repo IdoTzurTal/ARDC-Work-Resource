@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import EmpContext from "./Context/EmpContext";
+import {EmpContext} from "./Context/EmpContext";
 
 function Employers() {
   
