@@ -44,3 +44,33 @@ exports.loginE = (req, res) => {
         }
     )
 }
+
+exports.deleteEmployer = (req, res) => {
+    Employer.findByIdAndDelete({
+        _id: req.body.id
+    },
+        (error) => {
+            if (error) {
+                res.status(500).send(error)
+            }
+            else {
+                res.status(200).json({ message: "Employer Deleted" })
+            }
+        }
+    )
+}
+
+exports.editEmployer = (req, res) => {
+    Employer.findByIdAndUpdate( req.body._id, req.body )
+    .then((upemployer) => {
+        if (!upemployer) {
+            req.status(500).json({ message: "Employer Doesn't Exist" })
+        }
+        else {
+            res.status(200).json({ message: "Employer Data Updated", upemployer })
+        }
+    })
+    .catch((error) => {
+        res.status(500).json({ error })
+    })
+}

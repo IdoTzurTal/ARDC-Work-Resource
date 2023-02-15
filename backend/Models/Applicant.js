@@ -1,6 +1,6 @@
 const { PictureAsPdf } = require('@mui/icons-material')
 const mongoose = require('mongoose')
-const Skills = require('./Skills')
+const Skill = require('./Skill')
 
 
 const appSchema = new mongoose.Schema({
@@ -31,10 +31,10 @@ const appSchema = new mongoose.Schema({
     experience: {
         type: String,
     },
-    skills: {
+    skills: [{
         type: mongoose.Types.ObjectId,
-        ref: "Skills"
-    },
+        ref: "Skill"
+    }],
     cv: {
         type: String
     },
