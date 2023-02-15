@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 function HomePage() {
   return (
     <div>
@@ -13,7 +15,9 @@ function HomePage() {
         We meet can help you meet your hiring needs with qualified, skilled, and
         diligent employees from Israel's refugee communities.
       </p>
-      <button> join now</button> {/* linked to the register component */}
+      <button>
+        <NavLink to="/Register">Join now</NavLink>
+      </button>
     </div>
   );
 }
