@@ -40,14 +40,23 @@ function Login() {
   };
 
   return (
-    <Card sx={{ p: 5, display: "flex", flexDirection: "column" }}>
+    <Card
+      sx={{ p: 5, display: "flex", flexDirection: "column", minHeight: "85vw" }}
+    >
       {loading ? (
         <div>
           <p>loading</p>
         </div>
       ) : (
         <div>
-          <Typography color="primary">Login to existing user:</Typography>
+          <Typography
+            color="primary"
+            sx={{ fontWeight: "bold" }}
+            component="h4"
+            variant="h4"
+          >
+            Login to existing user:
+          </Typography>
           <TextField
             type="email"
             placeholder="email"
@@ -63,6 +72,11 @@ function Login() {
           <Button variant="contained" sx={{ m: 2 }} onClick={handleLogin}>
             Login
           </Button>
+          <img
+            src="/images/loginimg.png"
+            alt="icon"
+            style={{ width: "60vw" }}
+          />
         </div>
       )}
     </Card>

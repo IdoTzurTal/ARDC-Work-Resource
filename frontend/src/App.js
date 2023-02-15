@@ -19,7 +19,7 @@ function App() {
     <div className="App">
       <div>
         <Navbar />
-        <div style={{ marginTop: "10rem", paddingBottom: "2rem" }}>
+        <div style={{ marginTop: "5rem", paddingBottom: 2 }}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/Register" element={<Register />} />

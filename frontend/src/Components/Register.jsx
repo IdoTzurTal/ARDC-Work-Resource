@@ -1,4 +1,4 @@
-import { Button, styled, Typography } from "@mui/material";
+import { Button, styled, Typography, Card } from "@mui/material";
 import { useNavigate, NavLink } from "react-router-dom";
 
 function Register() {
@@ -10,15 +10,37 @@ function Register() {
 
   return (
     <div>
-      <Typography component="h2" variant="h5">
-        Sign up as:
-      </Typography>
-      <Button variant="outlined" sx={{ m: 1 }}>
-        <WhiteLink to="/FormApplicant">Applicant</WhiteLink>
-      </Button>
-      <Button variant="outlined" sx={{ m: 1 }}>
-        <WhiteLink to="/FormEmployer">Employer</WhiteLink>
-      </Button>
+      <Card
+        sx={{
+          p: 5,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          minHeight: "85vw",
+        }}
+      >
+        <Typography
+          color="primary"
+          sx={{ fontWeight: "bold" }}
+          component="h4"
+          variant="h4"
+        >
+          Sign up as:
+        </Typography>
+        <Button
+          variant="outlined"
+          sx={{ m: 1, fontWeight: "bold", width: 200 }}
+        >
+          <WhiteLink to="/FormApplicant">Applicant</WhiteLink>
+        </Button>
+        <Button
+          variant="outlined"
+          sx={{ m: 1, fontWeight: "bold", width: 200 }}
+        >
+          <WhiteLink to="/FormEmployer">Employer</WhiteLink>
+        </Button>
+        <img src="/images/signup.png" alt="icon" style={{ width: "65vw" }} />
+      </Card>
     </div>
   );
 }
