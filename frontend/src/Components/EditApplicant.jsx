@@ -24,7 +24,7 @@ function EditApplicant() {
   const [CV, setCV] = useState();
 
   const handleEdit = async () => {
-    let result = axios.post("http://localhost:9000/editA", {
+    let result = axios.post("http://localhost:9000/editApplicant", {
       firstname: firstName,
       lastname: lastName,
       gender: gender,
@@ -104,7 +104,7 @@ function EditApplicant() {
               Customer Support Representative
             </MenuItem>
           </Select>
-          <FormLabel>Other skills (optioal):</FormLabel>
+          <FormLabel>Other skills (optional):</FormLabel>
           <TextField id="skills" onClick={(e) => setSkills(e.target.value)} />
           <Button
             type="button"
