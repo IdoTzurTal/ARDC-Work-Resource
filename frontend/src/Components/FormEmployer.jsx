@@ -10,31 +10,34 @@ import {
   Button,
   FormGroup,
 } from "@mui/material";
+import { useContext } from "react";
+import EmpContext from "./Context/EmpContext";
 
 function FormEmployer() {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [companyName, setCompanyName] = useState();
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
-  const [jobRole, setJobRole] = useState();
-  const [description, setDescription] = useState();
-  const [requirements, setRequirements] = useState();
-  const [other, setOther] = useState();
-  const [logo, setLogo] = useState();
+  const { email, setEmail,
+    password, setPassword,
+    companyName, setCompanyName,
+    firstName, setFirstName,
+    lastName, setLastName,
+    profession, setProfession,
+    description, setDescription,
+    requirements, setRequirements,
+    other, setOther,
+    logo, setLogo } = useContext(EmpContext)
+
 
   const handleSignup = async () => {
     let result = axios.post("http://localhost:9000/registerE", {
-      company: companyName,
-      firstname: firstName,
-      lastname: lastName,
-      email: email,
-      password: password,
-      logo: logo,
-      // jobRole,
-      // description,
-      // requirements,
-      // other,
+      companyName,
+      firstName,
+      lastName,
+      email,
+      password,
+      logo,
+      profession,
+      description,
+      requirements,
+      other
     });
     console.log(result.data);
     alert("User created");
@@ -74,13 +77,13 @@ function FormEmployer() {
           placeholder="Last Name"
           onChange={(e) => setLastName(e.target.value)}
         />
-        {/* <label>Job Role: </label>
+        <label>Job Role: </label>
         <input
           type="text"
           placeholder="Job Role"
-          onChange={(e) => setJobRole(e.target.value)}
-        /> */}
-        {/* <label>Description: </label>
+          onChange={(e) => setProfession(e.target.value)}
+        />
+        <label>Description: </label>
         <input
           type="text"
           placeholder="Description"
@@ -91,18 +94,18 @@ function FormEmployer() {
           type="text"
           placeholder="Requirements"
           onChange={(e) => setRequirements(e.target.value)}
-        /> */}
+        />
         <label>Logo URL:</label>
         <input
           placeholder="paste public URL of photo here"
           onChange={(e) => setLogo(e.target.value)}
         />
-        {/* <label>Other: </label>
+        <label>Other: </label>
         <input
           type="text"
           placeholder="Other things important to you..."
           onChange={(e) => setOther(e.target.value)}
-        /> */}
+        />
 
         <button type="button" onClick={handleSignup}>
           Sign up

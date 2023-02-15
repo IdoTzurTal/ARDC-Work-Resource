@@ -13,33 +13,41 @@ import Resumes from "./Components/Resume";
 import Footer from "./Components/Footer";
 import Login from "./Components/Login";
 import { Paper } from "@mui/material";
+import EContext from "./Components/Context/EmpContext";
+import AContext from "./Components/Context/AppContext";
+
 
 function App() {
-  return (
-    <div className="App">
-      <div>
-        <Navbar />
-        <div style={{ marginTop: "5rem", paddingBottom: 2 }}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/Register" element={<Register />} />
-            <Route
-              path="/Login"
-              element={localStorage.getItem("token") ? <HomePage /> : <Login />}
-            />
-            <Route path="/FormApplicant" element={<FormApplicant />} />
-            <Route path="/FormEmployer" element={<FormEmployer />} />
-            <Route path="/Employers" element={<Employers />} />
-            <Route path="/Services" element={<Services />} />
-            <Route path="/Resumes" element={<Resumes />} />
-            <Route path="/ContactUs" element={<ContactUs />} />
-            <Route path="/Admin" element={<Admnin />} />
-          </Routes>
-        </div>
 
-        {/* <Footer /> */}
-      </div>
-    </div>
+  return (
+    <AContext.Provider>
+      <EContext.Provider>
+        <div className="App">
+          <div>
+            <Navbar />
+            <div style={{ marginTop: "5rem", paddingBottom: 2 }}>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/Register" element={<Register />} />
+                <Route
+                  path="/Login"
+                  element={localStorage.getItem("token") ? <HomePage /> : <Login />}
+                />
+                <Route path="/FormApplicant" element={<FormApplicant />} />
+                <Route path="/FormEmployer" element={<FormEmployer />} />
+                <Route path="/Employers" element={<Employers />} />
+                <Route path="/Services" element={<Services />} />
+                <Route path="/Resumes" element={<Resumes />} />
+                <Route path="/ContactUs" element={<ContactUs />} />
+                <Route path="/Admin" element={<Admnin />} />
+              </Routes>
+            </div>
+
+            {/* <Footer /> */}
+          </div>
+        </div>
+      </EContext.Provider>
+    </AContext.Provider>
   );
 }
 
