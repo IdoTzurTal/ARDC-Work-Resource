@@ -64,13 +64,13 @@ exports.editApplicant = (req, res) => {
     Applicant.findByIdAndUpdate( req.body._id, req.body )
     .then((upapplicant) => {
         if (!upapplicant) {
-            req.status(500).json({ message: "Applicant Doesn't Exist" })
+            res.status(500).json({ message: "Applicant Doesn't Exist" })
         }
         else {
             res.status(200).json({ message: "Applicant Data Updated", upapplicant })
         }
     })
     .catch((error) => {
-        res.status(500).json({ error })
+        res.status(403).json({ error: error.message })
     })
 }

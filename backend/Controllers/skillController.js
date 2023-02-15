@@ -40,9 +40,8 @@ exports.deleteSkill = async (req, res) => {
 exports.editSkill = (req, res) => {
     Skill.findByIdAndUpdate( req.body._id, req.body )
     .then((upskill) => {
-        console.log("heeeyyyyyy")
         if (!upskill) {
-            req.status(500).json({ message: "Skill Doesn't Exist" })
+            res.status(500).json({ message: "Skill Doesn't Exist" })
         }
         else {
             res.status(200).json({ message: "Skill Data Updated", upskill })
