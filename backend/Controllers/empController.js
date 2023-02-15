@@ -89,7 +89,7 @@ exports.displayEmployers = (req, res) => {
     Employer.find({
         email
     })
-    .then((emps) => {
-        res.status(200).json({emps})
-    })
+        .then((emps) => {
+            res.status(200).json({ emps })
+        })
 }

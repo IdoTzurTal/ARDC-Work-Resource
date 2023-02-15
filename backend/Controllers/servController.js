@@ -15,17 +15,17 @@ exports.createService = async (req, res) => {
 
 exports.editService = async (req, res) => {
     Service.findByIdAndUpdate(req.body._id, req.body)
-    .then((upservice) => {
-        if (!upservice) {
-            res.status(500).json({ message: "Service Doesn't Exist" })
-        }
-        else {
-            res.status(200).json({ message: "Service Data Updated" })
-        }
-    })
-    .catch((error) => {
-        res.status(500).json({ error })
-    })
+        .then((upservice) => {
+            if (!upservice) {
+                res.status(500).json({ message: "Service Doesn't Exist" })
+            }
+            else {
+                res.status(200).json({ message: "Service Data Updated" })
+            }
+        })
+        .catch((error) => {
+            res.status(500).json({ error })
+        })
 }
 
 exports.deleteService = (req, res) => {
@@ -41,4 +41,14 @@ exports.deleteService = (req, res) => {
             }
         }
     )
+}
+
+exports.displayServices = (req, res) => {
+    const { id } = req.body
+    Service.find({
+        id
+    })
+        .then((servs) => {
+            res.status(200).json({ servs })
+        })
 }
