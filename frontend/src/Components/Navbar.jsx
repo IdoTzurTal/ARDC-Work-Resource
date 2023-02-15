@@ -12,25 +12,29 @@ function Navbar() {
   });
 
   return (
-    <div>
-      <AppBar sx={{ display: "flex", justifyContent: "space-evenly", p: 1 }}>
-        <Toolbar>
-          <WhiteLink to="/">Home</WhiteLink>
-          <WhiteLink to="/Register">Register</WhiteLink>
-          <WhiteLink to="/Login">Login</WhiteLink>
-          <WhiteLink to="/Employers">Employers</WhiteLink>
-          <WhiteLink to="/Services">Services</WhiteLink>
-          <WhiteLink to="/ContactUs">Contact Us</WhiteLink>
-
-          {/* <WhiteLink
+    <AppBar>
+      <Toolbar
+        sx={{
+          position: "static",
+          display: "flex",
+          justifyContent: "space-between",
+          p: 1,
+        }}
+      >
+        <WhiteLink to="/">Home</WhiteLink>
+        <WhiteLink to="/Register">Register</WhiteLink>
+        <WhiteLink to="/Login">Login</WhiteLink>
+        <WhiteLink to="/Employers">Employers</WhiteLink>
+        <WhiteLink to="/Services">Services</WhiteLink>
+        <WhiteLink to="/ContactUs">Contact Us</WhiteLink>
+        {/* <WhiteLink
             sx={{ display: role === "Admin" ? "" : "none" }}
             to="/Admin"
           >
             Admin
           </WhiteLink> */}
-        </Toolbar>
-      </AppBar>
-    </div>
+      </Toolbar>
+    </AppBar>
   );
 }
 
