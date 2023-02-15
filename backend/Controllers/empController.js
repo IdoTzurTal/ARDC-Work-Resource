@@ -46,9 +46,50 @@ exports.loginE = (req, res) => {
                 firstname: employer.firstname,
               });
             }
-          }
-        );
-      }
-    }
-  );
-};
+            else if (employer == null) {
+                res.status(400).json({ message: "No Such Employer Found" })
+            }
+            else {
+                bcrypt.compare(req.body.password, employer.password, (error, isMatch) => {
+                    if (error || !isMatch) {
+                        res.status(406).json({ message: "Encryption Error" })
+                    }
+                    else {
+                        const token = jwt.sign({ id: employer._id }, process.env.JWT_TOKEN)
+                        res.json({ token, _id: employer._id, firstname: employer.firstname })
+                    }
+                })
+            }
+        }
+    )
+}
+
+exports.deleteEmployer = (req, res) => {
+    Employer.findByIdAndDelete({
+        _id: req.body.id
+    },
+        (error) => {
+            if (error) {
+                res.status(500).send(error)
+            }
+            else {
+                res.status(200).json({ message: "Employer Deleted" })
+            }
+        }
+    )
+}
+
+exports.editEmployer = (req, res) => {
+    Employer.findByIdAndUpdate( req.body._id, req.body )
+    .then((upemployer) => {
+        if (!upemployer) {
+            req.status(500).json({ message: "Employer Doesn't Exist" })
+        }
+        else {
+            res.status(200).json({ message: "Employer Data Updated", upemployer })
+        }
+    })
+    .catch((error) => {
+        res.status(500).json({ error })
+    })
+}

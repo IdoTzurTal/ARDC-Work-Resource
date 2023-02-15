@@ -44,3 +44,33 @@ exports.loginA = (req, res) => {
         }
     )
 }
+
+exports.deleteApplicant = (req, res) => {
+    Applicant.findByIdAndDelete({
+        _id: req.body.id
+    },
+        (error) => {
+            if (error) {
+                res.status(500).send(error)
+            }
+            else {
+                res.status(200).json({ message: "Applicant Deleted" })
+            }
+        }
+    )
+}
+
+exports.editApplicant = (req, res) => {
+    Applicant.findByIdAndUpdate( req.body._id, req.body )
+    .then((upapplicant) => {
+        if (!upapplicant) {
+            req.status(500).json({ message: "Applicant Doesn't Exist" })
+        }
+        else {
+            res.status(200).json({ message: "Applicant Data Updated", upapplicant })
+        }
+    })
+    .catch((error) => {
+        res.status(500).json({ error })
+    })
+}
