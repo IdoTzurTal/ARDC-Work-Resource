@@ -13,6 +13,7 @@ import Resumes from "./Components/Resume";
 import Footer from "./Components/Footer";
 import Login from "./Components/Login";
 import { Paper } from "@mui/material";
+import EditApplicant from "./Components/EditApplicant";
 
 function App() {
   return (
@@ -34,6 +35,13 @@ function App() {
             <Route path="/Resumes" element={<Resumes />} />
             <Route path="/ContactUs" element={<ContactUs />} />
             <Route path="/Admin" element={<Admnin />} />
+
+            {localStorage.getItem("token") ? (
+              <Route path="/EditApplicant" element={<EditApplicant />} />
+            ) : (
+              // <Route path="/EditApplicant" element={<E />} />
+              ""
+            )}
           </Routes>
         </div>
 

@@ -8,34 +8,45 @@ function ContactUs() {
   return (
     <div>
       <Card sx={{ p: 1, m: 1 }}>
-        <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+        <Typography color="primary" variant="h5" sx={{ fontWeight: "bold" }}>
           Contact us:
         </Typography>
+
         <Link
           target="_blank"
           href="https://www.linkedin.com/company/african-refugee-development-center/?originalSubdomain=il"
         >
-          <LinkedInIcon sx={{ width: "5vw", height: "5vw" }} />
+          <LinkedInIcon sx={{ width: "4vw", height: "4vw", p: 2 }} />
         </Link>
         <Link
           target="_blank"
           href="https://www.instagram.com/ardc_israel/?hl=en"
         >
-          <InstagramIcon sx={{ width: "5vw", height: "5vw" }} />
+          <InstagramIcon sx={{ width: "4vw", height: "4vw", p: 2 }} />
         </Link>
         <Link target="_blank" href="https://twitter.com/ARDC_org">
-          <TwitterIcon sx={{ width: "5vw", height: "5vw" }} />
+          <TwitterIcon sx={{ width: "4vw", height: "4vw", p: 2 }} />
         </Link>
         <Link
           target="_blank"
           href="https://www.facebook.com/ARDCinISRAEL/?fref=ts"
         >
-          <FacebookIcon sx={{ width: "5vw", height: "5vw" }} />
+          <FacebookIcon sx={{ width: "4vw", height: "4vw", p: 2 }} />
         </Link>
         <div>
-          <img src="/images/contact.png" alt="icon" style={{ width: "50vw" }} />
+          <img src="/images/contact.png" alt="icon" style={{ width: "40vw" }} />
         </div>
       </Card>
+      <img
+        src="/images/contactrefugee.jpg"
+        alt="icon"
+        style={{
+          width: "100vw",
+          height: "40vw",
+          objectFit: "cover",
+          objectPosition: "30% 75%",
+        }}
+      />
     </div>
   );
 }
