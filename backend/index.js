@@ -1,0 +1,22 @@
+const express = require('express')
+const app = express()
+const mongoose = require('mongoose')
+const cors = require('cors')
+const appController = require('../backend/Controllers/appController')
+const empController = require('../backend/Controllers/empController')
+require('dotenv').config()
+
+mongoose.connect(process.env.MONGO_URL)
+.then(() => console.log("MongoDB is Connected"))
+.catch(error => {
+    console.log("Connection Failed")
+    console.log(error)
+})
+
+app.use(express.json())
+app.use(cors())
+app.post("/registerA", appController.registerA)
+app.post("/loginA", appController.loginA)
+app.post("/registerE", empController.registerE)
+app.post("/loginE", empController.loginE)
+app.listen(9000, () => console.log("Port 9000 is Active"))
