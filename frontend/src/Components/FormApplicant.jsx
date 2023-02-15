@@ -1,5 +1,14 @@
 import axios from "axios";
 import { useState } from "react";
+import {
+  FormControl,
+  FormLabel,
+  TextField,
+  Select,
+  MenuItem,
+  Card,
+  Button,
+} from "@mui/material";
 
 function FormApplicant() {
   const [firstName, setFirstName] = useState();
@@ -13,104 +22,98 @@ function FormApplicant() {
   const [skills, setSkills] = useState();
   const [CV, setCV] = useState();
 
-  //   const handleSignup = async () => {
-  //     let result = axios.post("http://localhost:9000/register", {
-  //       firstName,
-  //       lastName,
-  //       email,
-  //       password,
-  //       bio,
-  //       experience,
-  //       mainSkill,
-  //       skills,
-  //     });
-  //     console.log(result.data);
-  //   };
+  const handleSignup = async () => {
+    let result = axios.post("http://localhost:9000/registerA", {
+      firstname: firstName,
+      lastname: lastName,
+      gender: gender,
+      email: email,
+      password: password,
+      bio: bio,
+      experience: experience,
+      skills: `${mainSkill}, ${skills}`,
+      cv: CV,
+    });
+    console.log(result.data);
+    alert("User created!");
+  };
 
   return (
-    <div>
-      <form>
+    <Card>
+      <FormControl sx={{ display: "flex", items: "center", p: 3 }}>
         <h1>Sign Up as Applicant: </h1>
-        <label>First Name: </label>
-        <input
+        <FormLabel>First Name: </FormLabel>
+        <TextField
           type="text"
           placeholder="First Name"
           onChange={(e) => setFirstName(e.target.value)}
         />
-        <label>Last Name: </label>
-        <input
+        <FormLabel>Last Name: </FormLabel>
+        <TextField
           type="text"
           placeholder="Last Name"
           onChange={(e) => setLastName(e.target.value)}
         />
-        <label>Gender: </label>
-        <select
-          name="gender"
-          id="gender"
-          onChange={(e) => setGender(e.target.value)}
-        >
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-        </select>
-        <label>Email: </label>
-        <input
+        <FormLabel>Gender: </FormLabel>
+        <Select id="gender" onClick={(e) => setGender(e.target.value)}>
+          <MenuItem value="Male">Male</MenuItem>
+          <MenuItem value="Female">Female</MenuItem>
+        </Select>
+        <FormLabel>Email: </FormLabel>
+        <TextField
           type="email"
           placeholder="email"
           onChange={(e) => setEmail(e.target.value)}
         />
-        <label>Password: </label>
-        <input
+        <FormLabel>Password: </FormLabel>
+        <TextField
           type="password"
           placeholder="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-
-        <label>Bio: </label>
-        <input
+        <FormLabel>Bio: </FormLabel>
+        <TextField
           type="text"
           placeholder="Bio"
           onChange={(e) => setBio(e.target.value)}
         />
-        <label>Experience: </label>
-        <input
+        <FormLabel>Experience: </FormLabel>
+        <TextField
           type="text"
           placeholder="Experience"
           onChange={(e) => setExperience(e.target.value)}
         />
-        <label>Choose your main skill</label>
-        <select
+        <FormLabel>Choose your main skill</FormLabel>
+        <Select
           name="main-skill"
           id="main-skill"
           onChange={(e) => setMainSkill(e.target.value)}
         >
-          <option value="QA Engineer">QA Engineer</option>
-          <option value="Manual QA Engineer">Manual QA Engineer</option>
-          <option value="Technical Support and Helpdesk">
+          <MenuItem value="QA Engineer">QA Engineer</MenuItem>
+          <MenuItem value="Manual QA Engineer">Manual QA Engineer</MenuItem>
+          <MenuItem value="Technical Support and Helpdesk">
             Technical Support and Helpdesk
-          </option>
-          <option value="IT Technician">IT Technician</option>
-          <option value="Java Developer">Java Developer</option>
-          <option value="Python Developer">Python Developer</option>
-          <option value="Frontend Developer">Frontend Developer</option>
-          <option value="Customer Support Representative">
+          </MenuItem>
+          <MenuItem value="IT Technician">IT Technician</MenuItem>
+          <MenuItem value="Java Developer">Java Developer</MenuItem>
+          <MenuItem value="Python Developer">Python Developer</MenuItem>
+          <MenuItem value="Frontend Developer">Frontend Developer</MenuItem>
+          <MenuItem value="Customer Support Representative">
             Customer Support Representative
-          </option>
-        </select>
-
-        <label>Other skills (optional):</label>
-        <input
-          name="skills"
-          id="skills"
-          onChange={(e) => setSkills(e.target.value)}
-        />
-        <button
+          </MenuItem>
+        </Select>
+        <FormLabel>Other skills (optioal):</FormLabel>
+        <TextField id="skills" onClick={(e) => setSkills(e.target.value)} />
+        <Button
           type="button"
-          // onClick={handleSignup}
+          variant="contained"
+          sx={{ mt: 1 }}
+          onClick={handleSignup}
         >
           Sign up
-        </button>
-      </form>
-    </div>
+        </Button>
+      </FormControl>
+    </Card>
   );
 }
 

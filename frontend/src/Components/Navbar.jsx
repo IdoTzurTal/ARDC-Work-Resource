@@ -1,12 +1,5 @@
 import { NavLink } from "react-router-dom";
-import {
-  AppBar,
-  Toolbar,
-  styled,
-  Typography,
-  Button,
-  makeStyles,
-} from "@mui/material";
+import { AppBar, Toolbar, styled } from "@mui/material";
 
 function Navbar() {
   const WhiteLink = styled(NavLink)({
@@ -17,7 +10,7 @@ function Navbar() {
 
   return (
     <div>
-      <AppBar>
+      <AppBar sx={{ position: "fixed", p: 1 }}>
         <Toolbar>
           <WhiteLink to="/">Home</WhiteLink>
           <WhiteLink to="/Register">Register</WhiteLink>
