@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { EmpContext } from "./Context/EmpContext";
 import axios from "axios";
 import {
   FormControl,
@@ -9,34 +10,68 @@ import {
   FormGroup,
   Typography,
 } from "@mui/material";
-import { useContext } from "react";
-import { EmpContext } from "./Context/EmpContext";
 
 function FormEmployer() {
-  const { email, setEmail,
-    password, setPassword,
-    companyName, setCompanyName,
-    firstName, setFirstName,
-    lastName, setLastName,
-    profession, setProfession,
-    description, setDescription,
-    requirements, setRequirements,
-    other, setOther,
-    logo, setLogo } = useContext(EmpContext)
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    companyName,
+    setCompanyName,
+    firstName,
+    setFirstName,
+    lastName,
+    setLastName,
+    profession,
+    setProfession,
+    description,
+    setDescription,
+    requirements,
+    setRequirements,
+    other,
+    setOther,
+    logo,
+    setLogo,
+  } = useContext(EmpContext);
 
+  const [imageForURL, setImageForURL] = useState("");
+
+  const [errorMessage, setErrorMessage] = useState("");
+
+  async function getImageURL() {
+    const formData = new FormData();
+    formData.append("file", imageForURL);
+    formData.append("upload_preset", "wvowhemd");
+    try {
+      axios
+        .post(
+          "https://api.cloudinary.com/v1_1/dzfle6dgp/image/upload",
+          formData
+        )
+        .then((response) => {
+          setLogo(response?.data?.url);
+        });
+      setErrorMessage("");
+    } catch (error) {
+      console.log(error);
+      setErrorMessage("Error uploading image. Please try again.");
+    }
+  }
 
   const handleSignup = async () => {
-    let result = axios.post("http://localhost:9000/registerE", {
+    console.log(logo);
+    let result = await axios.post("http://localhost:9000/registerE", {
       company: companyName,
       firstname: firstName,
       lastname: lastName,
-      email,
-      password,
-      logo,
-      profession,
-      description,
-      requirements,
-      other
+      email: email,
+      password: password,
+      profession: profession,
+      description: description,
+      requirements: requirements,
+      logo: logo,
+      other: other,
     });
     console.log(result);
     alert("User created");
@@ -94,13 +129,13 @@ function FormEmployer() {
             placeholder="Last Name"
             onChange={(e) => setLastName(e.target.value)}
           />
-          <FormLabel>Job Role: </FormLabel>
+          <FormLabel>Profession: </FormLabel>
           <TextField
-            label="Job Role"
+            label="Profession"
             sx={{ minmaxWidth: "20vw" }}
             margin="dense"
             type="text"
-            placeholder="Job Role"
+            placeholder="Profession"
             onChange={(e) => setProfession(e.target.value)}
           />
           <FormLabel>Description: </FormLabel>
@@ -108,38 +143,33 @@ function FormEmployer() {
             label="Description"
             sx={{ minmaxWidth: "20vw" }}
             margin="dense"
-
             type="text"
             placeholder="Description"
             onChange={(e) => setDescription(e.target.value)}
           />
           <FormLabel>Requirements: </FormLabel>
           <TextField
-            label="Description"
+            label="Requirements"
             sx={{ minmaxWidth: "20vw" }}
             margin="dense"
-
             type="text"
             placeholder="Requirements"
             onChange={(e) => setRequirements(e.target.value)}
           />
-          <FormLabel>Logo URL:</FormLabel>
-          <TextField
+          <FormLabel>Logo:</FormLabel>
+          <input
             label="Logo URL"
-            sx={{ minmaxWidth: "20vw" }}
-            margin="dense"
-            type="text"
-            ut
-            placeholder="paste public URL of photo here"
-            onChange={(e) => setLogo(e.target.value)}
+            type="file"
+            onChange={(e) => setImageForURL(e.target.files[0])}
           />
+          <Button onClick={() => getImageURL()} variant="contained">
+            Upload
+          </Button>
           <FormLabel>Other: </FormLabel>
           <TextField
             label="Other"
             sx={{ minmaxWidth: "20vw" }}
             margin="dense"
-
-
             type="text"
             placeholder="Other things important to you..."
             onChange={(e) => setOther(e.target.value)}

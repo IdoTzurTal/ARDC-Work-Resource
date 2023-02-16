@@ -15,6 +15,7 @@ function Navbar() {
     display: "flex",
     alignItems: "center",
     padding: 4,
+    fontFamily: "Oswald",
     "&:hover": {
       fontWeight: "bold",
     },
@@ -36,7 +37,6 @@ function Navbar() {
           Home
         </WhiteLink>
         <WhiteLink to="/Register">
-          {" "}
           <LockOpenIcon /> Register
         </WhiteLink>
         <WhiteLink to="/Login">
@@ -46,7 +46,6 @@ function Navbar() {
           <BadgeIcon /> Employers
         </WhiteLink>
         <WhiteLink to="/Services">
-          {" "}
           <DesignServicesIcon />
           Services
         </WhiteLink>
@@ -60,13 +59,9 @@ function Navbar() {
         <WhiteLink to="/ContactUs">
           <ContactPageIcon /> Contact Us
         </WhiteLink>
-
-        {/* <WhiteLink
-            sx={{ display: role === "Admin" ? "" : "none" }}
-            to="/Admin"
-          >
-            Admin
-          </WhiteLink> */}
+        {/*     <WhiteLink sx={{ display: role === "Admin" ? "" : "none" }} to="/Admin">
+          Admin
+        </WhiteLink> */}
       </Toolbar>
     </AppBar>
   );

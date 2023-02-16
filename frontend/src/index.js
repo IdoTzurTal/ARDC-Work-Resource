@@ -21,7 +21,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: ["Anton", "sans-serif"].join(","),
+    fontFamily: ["Oswald", "sans-serif"].join(","),
   },
 });
 
