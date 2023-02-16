@@ -14,7 +14,7 @@ function AContext({children}) {
     const [skills, setSkills] = useState();
     const [CV, setCV] = useState();
 
-    return <AppContext.Provider value={{
+    return (<AppContext.Provider value={{
         firstName, setFirstName,
         lastName, setLastName,
         gender, setGender,
@@ -28,7 +28,7 @@ function AContext({children}) {
     }}
     >
         {children}
-    </AppContext.Provider>
+    </AppContext.Provider>)
 }
 
 export default AContext
