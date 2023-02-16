@@ -19,7 +19,6 @@ import EditApplicant from "./Components/EditApplicant";
 
 
 function App() {
-
   return (
     <AppContext>
       <EmpContext>

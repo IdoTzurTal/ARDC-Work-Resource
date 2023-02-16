@@ -12,7 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useContext } from "react";
-import AppContext from "./Context/AppContext";
+import {AppContext} from "./Context/AppContext";
 
 function FormApplicant() {
   const {
@@ -40,8 +40,9 @@ function FormApplicant() {
       skills: `${mainSkill}, ${skills}`,
       cv: CV,
     });
-    console.log(result.data);
+    console.log(result);
     alert("User created!");
+    console.log(email);
   };
 
   return (

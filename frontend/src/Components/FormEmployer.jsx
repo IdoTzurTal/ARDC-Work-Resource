@@ -27,9 +27,9 @@ function FormEmployer() {
 
   const handleSignup = async () => {
     let result = axios.post("http://localhost:9000/registerE", {
-      companyName,
-      firstName,
-      lastName,
+      company: companyName,
+      firstname: firstName,
+      lastname: lastName,
       email,
       password,
       logo,
@@ -38,7 +38,7 @@ function FormEmployer() {
       requirements,
       other
     });
-    console.log(result.data);
+    console.log(result);
     alert("User created");
   };
 
