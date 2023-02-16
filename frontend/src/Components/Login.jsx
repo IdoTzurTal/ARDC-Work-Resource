@@ -1,14 +1,17 @@
 import { Button, Card, TextField, Typography } from "@mui/material";
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import jwt_decode from "jwt-decode";
 import { display } from "@mui/system";
+import { AppContext } from "./Context/AppContext";
 
 function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   // const [loading, setLoading] = useState(false);
-
+  const {
+    role, setRole
+  } = useContext(AppContext)
   const handleLogin = () => {
     // setLoading(true);
     axios
@@ -19,8 +22,9 @@ function Login() {
       .then((result) => {
         localStorage.setItem("email", email);
         localStorage.setItem("token", result.data.token);
+        localStorage.setItem("role", result.data.role);
         console.log(result.data);
-        console.log(jwt_decode(localStorage.getItem("token")));
+        // console.log(jwt_decode(localStorage.getItem("token")).role);
         // setLoading(false);
       })
       .catch((error) => {
@@ -30,10 +34,10 @@ function Login() {
             password,
           })
           .then((result) => {
-            console.log(result.data.token);
+            // console.log(result.data.token);
             localStorage.setItem("email", email);
             localStorage.setItem("token", result.data.token);
-            console.log(jwt_decode(localStorage.getItem("token")));
+            setRole(jwt_decode(localStorage.getItem("token")).role);
             // setLoading(false);
           })
           .catch((error) => {
@@ -43,7 +47,7 @@ function Login() {
         alert("logged in");
       });
   };
-
+  console.log(role)
   return (
     <Card
       sx={{
