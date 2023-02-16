@@ -13,6 +13,7 @@ function AContext({children}) {
     const [mainSkill, setMainSkill] = useState();
     const [skills, setSkills] = useState();
     const [CV, setCV] = useState();
+    const [role, setRole] = useState()
 
     return (<AppContext.Provider value={{
         firstName, setFirstName,
@@ -24,7 +25,8 @@ function AContext({children}) {
         experience, setExperience,
         mainSkill, setMainSkill,
         skills, setSkills,
-        CV, setCV
+        CV, setCV,
+        role, setRole
     }}
     >
         {children}

@@ -7,7 +7,7 @@ import EmployersList from "./Components/Employers";
 import FormEmployer from "./Components/FormEmployer";
 import FormApplicant from "./Components/FormApplicant";
 import ServicesList from "./Components/Services";
-import Admnin from "./Components/Admin";
+import Admin from "./Components/Admin";
 import Navbar from "./Components/Navbar";
 import Resumes from "./Components/Resume";
 import Footer from "./Components/Footer";
@@ -16,39 +16,45 @@ import { Paper } from "@mui/material";
 import EmpContext from "./Components/Context/EmpContext";
 import AppContext from "./Components/Context/AppContext";
 import EditApplicant from "./Components/EditApplicant";
+import jwt_decode from "jwt-decode";
+import { useContext } from "react";
+
 
 
 function App() {
+  // const {
+  //   role
+  // } = useContext(AppContext)
   return (
     <AppContext>
       <EmpContext>
-    <div className="App">
-      <div>
-        <Navbar />
-        <div style={{ marginTop: "5rem", paddingBottom: 2 }}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/Register" element={<Register />} />
-            <Route
-              path="/Login"
-              element={localStorage.getItem("token") ? <HomePage /> : <Login />}
-            />
-            <Route path="/FormApplicant" element={<FormApplicant />} />
-            <Route path="/FormEmployer" element={<FormEmployer />} />
-            <Route path="/Employers" element={<EmployersList />} />
-            <Route path="/Services" element={<ServicesList />} />
-            <Route path="/Resumes" element={<Resumes />} />
-            <Route path="/ContactUs" element={<ContactUs />} />
-            <Route path="/Admin" element={<Admnin />} />
+        <div className="App">
+          <div>
+            <Navbar />
+            <div style={{ marginTop: "5rem", paddingBottom: 2 }}>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/Register" element={<Register />} />
+                <Route
+                  path="/Login"
+                  element={localStorage.getItem("token") ? <HomePage /> : <Login />}
+                />
+                <Route path="/FormApplicant" element={<FormApplicant />} />
+                <Route path="/FormEmployer" element={<FormEmployer />} />
+                <Route path="/Employers" element={<EmployersList />} />
+                <Route path="/Services" element={<ServicesList />} />
+                <Route path="/Resumes" element={<Resumes />} />
+                <Route path="/ContactUs" element={<ContactUs />} />
+                {/* <Route path="/Admin" element={role ? <Admin /> : <HomePage />} /> */}
 
-            {localStorage.getItem("token") ? (
-              <Route path="/EditApplicant" element={<EditApplicant />} />
-            ) : (
-              // <Route path="/EditApplicant" element={<E />} />
-              ""
-            )}
-          </Routes>
-        </div>
+                {localStorage.getItem("token") ? (
+                  <Route path="/EditApplicant" element={<EditApplicant />} />
+                ) : (
+                  // <Route path="/EditApplicant" element={<E />} />
+                  ""
+                )}
+              </Routes>
+            </div>
 
             {/* <Footer /> */}
           </div>
