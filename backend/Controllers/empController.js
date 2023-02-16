@@ -85,11 +85,11 @@ exports.editEmployer = (req, res) => {
 }
 
 exports.displayEmployers = (req, res) => {
-    const { email } = req.body
-    Employer.find({
-        email
-    })
+    Employer.find()
         .then((emps) => {
             res.status(200).json({ emps })
+        })
+        .catch((error) => {
+            res.status(500).send(error)
         })
 }

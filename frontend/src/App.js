@@ -3,10 +3,10 @@ import { NavLink, Route, Routes } from "react-router-dom";
 import HomePage from "./Components/HomePage";
 import Register from "./Components/Register";
 import ContactUs from "./Components/ContactUs";
-import Employers from "./Components/Employers";
+import EmployersList from "./Components/Employers";
 import FormEmployer from "./Components/FormEmployer";
 import FormApplicant from "./Components/FormApplicant";
-import Services from "./Components/Services";
+import ServicesList from "./Components/Services";
 import Admnin from "./Components/Admin";
 import Navbar from "./Components/Navbar";
 import Resumes from "./Components/Resume";
@@ -35,8 +35,8 @@ function App() {
             />
             <Route path="/FormApplicant" element={<FormApplicant />} />
             <Route path="/FormEmployer" element={<FormEmployer />} />
-            <Route path="/Employers" element={<Employers />} />
-            <Route path="/Services" element={<Services />} />
+            <Route path="/Employers" element={<EmployersList />} />
+            <Route path="/Services" element={<ServicesList />} />
             <Route path="/Resumes" element={<Resumes />} />
             <Route path="/ContactUs" element={<ContactUs />} />
             <Route path="/Admin" element={<Admnin />} />
