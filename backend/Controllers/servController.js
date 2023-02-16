@@ -44,11 +44,11 @@ exports.deleteService = (req, res) => {
 }
 
 exports.displayServices = (req, res) => {
-    const { id } = req.body
-    Service.find({
-        id
-    })
+    Service.find()
         .then((servs) => {
             res.status(200).json({ servs })
+        })   
+        .catch((error) => {
+            res.status(500).send(error)
         })
 }

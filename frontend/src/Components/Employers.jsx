@@ -1,34 +1,35 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import {EmpContext} from "./Context/EmpContext";
+import axios from "axios";
+import { Typography, Paper } from "@mui/material";
 
-function Employers() {
-  
-  const { email, setEmail,
-    password, setPassword,
-    companyName, setCompanyName,
-    firstName, setFirstName,
-    lastName, setLastName,
-    profession, setProfession,
-    description, setDescription,
-    requirements, setRequirements,
-    other, setOther,
-    logo, setLogo } = useContext(EmpContext)
+const EmployerList = () => {
+  const [employers, setEmployers] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:9000/displayEmployers")
+      .then(response => {
+        setEmployers(response.data.emps);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <div>
-      <h3>Employers Working with us</h3>
-      <p>Join our community and hire our services </p>
-      <h4>List of the companies working with us: </h4>
-
-      <p>MAPPED LIST (by admin's approve) </p>
-      <p>Name of company:</p>
-      <p>Job role:</p>
-      <p>Logo: ?/ photo</p>
-      <p>Job description:</p>
-      <p>Requirements:</p>
-      <p>other</p>
+      {employers.map(employer => (
+        <Paper key={employer._id} sx={{m:1, mr:"4wv", ml:"4vw"}}>
+          <Typography variant="h4" component="h5">Name of company: {employer.company}</Typography>
+          {employer.logo && <img src={employer.logo} alt="Company logo" />}
+          <Typography>Email: {employer.email}</Typography>
+          <Typography>Job description: {employer.description}</Typography>
+          <Typography>Requirements: {employer.requirements}</Typography>
+          <Typography>Other: {employer.other}</Typography>
+        </Paper>
+      ))}
     </div>
   );
-}
+};
 
-export default Employers;
+export default EmployerList;

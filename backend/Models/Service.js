@@ -9,11 +9,11 @@ const servicesSchema = new mongoose.Schema({
     description: {
         type: String,
     },
-    examples: {
-        type: mongoose.Types.ObjectId,
-        ref: "Applicant",
-        required: false
-    }
+    // examples: {
+    //     type: mongoose.Types.ObjectId,
+    //     ref: "Applicant",
+    //     required: false
+    // }
 })
 
 module.exports = mongoose.model("Services", servicesSchema)
