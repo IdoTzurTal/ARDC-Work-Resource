@@ -57,7 +57,7 @@ const EmployerList = () => {
           <Typography variant="h4" component="h5" color="primary">
             {employer.company}
           </Typography>
-          {employer.logo && <img src={employer.url} alt="Company logo" />}
+          {employer.logo && <img src={employer.logo} alt="Company logo"  width="300"/>}
           <Typography>Email: {employer.email}</Typography>
           <Typography>Job description: {employer.description}</Typography>
           <Typography>Requirements: {employer.requirements}</Typography>
