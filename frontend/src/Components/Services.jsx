@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from "react";
-import { EmpContext } from "./Context/EmpContext";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { Typography, Paper } from "@mui/material";
 
