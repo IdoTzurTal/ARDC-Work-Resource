@@ -1,5 +1,5 @@
 import { Button, styled, Typography, Card } from "@mui/material";
-import { useNavigate, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Register() {
   const WhiteLink = styled(NavLink)({

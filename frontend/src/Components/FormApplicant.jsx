@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useState } from "react";
 import {
   FormControl,
   FormLabel,
@@ -12,7 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useContext } from "react";
-import {AppContext} from "./Context/AppContext";
+import { AppContext } from "./Context/AppContext";
 
 function FormApplicant() {
   const {

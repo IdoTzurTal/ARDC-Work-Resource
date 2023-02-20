@@ -1,5 +1,5 @@
 import "./App.css";
-import { NavLink, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import HomePage from "./Components/HomePage";
 import Register from "./Components/Register";
 import ContactUs from "./Components/ContactUs";
@@ -7,17 +7,12 @@ import EmployersList from "./Components/Employers";
 import FormEmployer from "./Components/FormEmployer";
 import FormApplicant from "./Components/FormApplicant";
 import ServicesList from "./Components/Services";
-import Admin from "./Components/Admin";
 import Navbar from "./Components/Navbar";
 import Resumes from "./Components/Resume";
-import Footer from "./Components/Footer";
 import Login from "./Components/Login";
-import { Paper } from "@mui/material";
 import EmpContext from "./Components/Context/EmpContext";
 import AppContext from "./Components/Context/AppContext";
 import EditApplicant from "./Components/EditApplicant";
-import jwt_decode from "jwt-decode";
-import { useContext } from "react";
 
 
 
